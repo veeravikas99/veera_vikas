@@ -1,0 +1,37 @@
+#include<stdio.h>
+#include<unistd.h>
+void main() {
+	int n,i,H=143,distance=0;
+	printf("Number of Request Pending in Queue :");
+	scanf("%d",&n);
+	int disk[n];
+	for(i=0;i<n;i++) 
+	{
+		while(1) 
+		{
+			printf("\nRequest %d:",i+1);
+			scanf("%d",&disk[i]);
+			if(disk[i]>4999 || disk[i]<0) 
+			{
+				printf("Worng Disk Number Please Reenter Same Disk Number :");
+			}
+			else 
+			{
+				break;
+			}
+		}
+	}
+	for(i=0;i<n;i++) 
+	{
+		if(disk[i]>H) 
+		{
+			distance+=disk[i]-H;
+		}
+		else 
+		{
+			distance+=H-disk[i];
+		}
+		H=disk[i];
+	}
+	printf("Total Distance Covered is %d",distance);
+}
